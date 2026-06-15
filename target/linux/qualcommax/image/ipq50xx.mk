@@ -111,3 +111,19 @@ ifneq ($(CONFIG_TARGET_ROOTFS_INITRAMFS),)
 endif
 endef
 TARGET_DEVICES += xiaomi_ax6000
+
+
+define Device/tplink_wta301-v1
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_VENDOR := TP-Link
+	DEVICE_MODEL := WTA301
+	DEVICE_VARIANT := v1
+	DEVICE_DTS_CONFIG := config@ipq0509
+	SOC := ipq0509
+	DEVICE_PACKAGES := ipq-wifi-tplink_wta301-v1
+	IMAGE_SIZE := 128m
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+endef
+TARGET_DEVICES += tplink_wta301-v1
